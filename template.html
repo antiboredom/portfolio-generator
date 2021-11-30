@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PORTFOLIO</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="toc page">
+      <h1>{{title}}!</h1>
+      <div class="toc-project-list">
+        {% for project in projects %}
+        <div class="toc-project">
+          <img class="toc-image" src="{{project.images[0]}}" />
+          <div>
+            <a class="project-toc-title" href="#project-{{project.id}}">{{project.title}} ({{project.year}})</a>
+            <p>{{project.material}}</p>
+            <p>Page 
+              {% if project.start_page == project.end_page %}
+                {{project.start_page}}
+              {% else %}
+                {{project.start_page}}-{{project.end_page}}
+              {% endif %}
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    {% for project in projects %}
+    <section id="project-{{project.id}}" class="project-{{project.id}}">
+      <div class="project-box">
+        <h2 class="title">{{project.title}}</h2>
+        <div class="description">{{project.description}}</div>
+      </div>
+      {% for layout in project.layouts %}
+      <div
+        class="page"
+        style="grid-template-areas: {{layout.area}}; grid-template-columns: {{layout.cols}}; grid-template-rows: {{layout.rows}}"
+      >
+        {% for image in layout.images %}
+        <div class="page-image" style="grid-area: {{image.name}}">
+          <img src="{{image.src}}">
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endfor %}
+  </body>
+</html>

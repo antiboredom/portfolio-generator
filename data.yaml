@@ -1,0 +1,49 @@
+title: Sam Lavigne
+website: https://lav.io
+
+projects:
+  - title: title 1
+    url: https://website.com
+    year: 2020
+    material: website
+    commissioned: rhizome
+    images:
+      - testimages/one.jpg
+      - testimages/two.jpg
+    description: >
+      this won't [have](https://google.com) line
+      breaks...
+
+  - title: title 1
+    url: https://website.com
+    year: 2020
+    material: lol
+    commissioned: rhizome
+    images:
+      - testimages/one.jpg
+    description: ty
+      this won't [have](https://google.com) line
+      breaks...
+
+  - title: title 2
+    url: https://website.com
+    description: |
+      this is a test with line breaks
+      another test
+      last test
+    text_width: 100
+    text_height: 100
+    x: 0
+    y: 0
+    commissioned: rhizome
+    layout: |
+      A A A
+      B B C
+
+      D E
+    images:
+      - testimages/three.jpg
+      - testimages/four.jpg
+      - testimages/five.jpg
+      - testimages/six.jpg
+      - testimages/seven.jpg

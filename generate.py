@@ -1,3 +1,4 @@
+from PyPDF2 import PdfFileMerger, PdfFileReader
 import os
 from strictyaml import load
 from jinja2 import Template
@@ -71,16 +72,25 @@ with open(output_html_filename, "w") as outfile:
 
 
 async def main():
-    print("launching")
+    print("saving pdf")
     browser = await launch()
-    print("new page")
     page = await browser.newPage()
-    print("goto")
     await page.goto("file://" + output_html_path)
-    print("save pdf")
-    await page.pdf(path="portfolio.pdf", printBackground=True, landscape=True)
-    print("close ")
+    await page.pdf(path="portfolio_temp.pdf", printBackground=True, landscape=True)
     await browser.close()
+
+    print("adding bookmarks")
+
+    output = PdfFileMerger()
+    output.append("portfolio_temp.pdf")
+
+    for project in data["projects"]:
+        output.addBookmark(project["title"], int(project["start_page"])-1)
+
+    with open("portfolio.pdf", "wb") as outfile:
+        output.write(outfile)
+
+    os.unlink("portfolio_temp.pdf")
 
 
 asyncio.get_event_loop().run_until_complete(main())

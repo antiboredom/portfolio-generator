@@ -2,6 +2,7 @@ appdirs==1.4.4
 importlib-metadata==4.8.2
 Jinja2==3.0.3
 MarkupSafe==2.0.1
+mistune==2.0.0rc1
 pyee==8.2.2
 PyPDF2==1.26.0
 pyppeteer==0.2.6

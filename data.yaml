@@ -31,10 +31,8 @@ projects:
       this is a test with line breaks
       another test
       last test
-    text_width: 100
-    text_height: 100
-    x: 0
-    y: 0
+    text_width: 500px
+    text_height: 300px
     commissioned: rhizome
     layout: |
       A A A

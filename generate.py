@@ -5,6 +5,7 @@ from jinja2 import Template
 import asyncio
 from pyppeteer import launch
 from PyPDF2 import PdfFileMerger, PdfFileReader
+import mistune
 
 output_html_filename = "portfolio.html"
 output_html_path = os.path.join(
@@ -49,6 +50,7 @@ def main(render_pdf=True):
 
     for project in data["projects"]:
         project["id"] = pid
+        project["description"] = mistune.html(project["description"])
 
         layouts = []
 

@@ -4,7 +4,7 @@ from strictyaml import load
 from jinja2 import Template
 import asyncio
 from pyppeteer import launch
-from PyPDF2 import PdfFileMerger, PdfFileReader
+from PyPDF2 import PdfFileMerger
 import mistune
 
 output_html_filename = "portfolio.html"
@@ -16,7 +16,8 @@ with open("data.yaml", "r") as infile:
     content = infile.read()
     data = load(content)
 
-data = data.data
+data = dict(data.data)
+
 
 async def render(outname="portfolio.pdf"):
     tempname = outname + ".tmp.pdf"

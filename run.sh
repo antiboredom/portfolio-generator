@@ -1,1 +1,1 @@
-nodemon generate.py -w template.html -w data.yaml -w generate.py
+nodemon generate.py -w template.html -w data.yaml -w generate.py -w style.css

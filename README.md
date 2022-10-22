@@ -18,6 +18,12 @@ To use, modify `data.yml`. And then run:
 python generate.py
 ```
 
+The script will create an html file, and then convert that file to a PDF.
+
+You can modify style.css to make any needed design changes.
+
+If you have [nodemon](https://www.npmjs.com/package/nodemon) installed you can also run `run.sh` which will automatically re-generate your portfolio when you change any of the files.
+
 ## Data format
 
 The script will read from `data.yml` to generate your portfolio.
@@ -76,5 +82,5 @@ projects:
 - **description**: a description of the project. Can be multi-line, and can include markdown.
 - **text_width**: the width of the description text box (optional)
 - **text_height**: the height of the description text box (optional)
-- **layout**: an optional description of how images should be arranged in a grid. 
+- **layout**: an optional description of how images should be arranged in a grid. Uses the same syntax as [css grid-template-areas](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas)
 

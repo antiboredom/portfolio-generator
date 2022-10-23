@@ -12,7 +12,7 @@
       <div class="toc-project-list">
         {% for project in projects %}
         <div class="toc-project">
-          <img class="toc-image" src="{{project.images[0]}}" />
+          <img class="toc-image" src="{{project.images[0].src}}" />
           <div>
             <a class="project-toc-title" href="#project-{{project.id}}">{{project.title}} ({{project.year}})</a>
             <p>{{project.material}}</p>
@@ -42,7 +42,7 @@
       >
         {% for image in layout.images %}
         <div class="page-image" style="grid-area: {{image.name}}">
-          <img src="{{image.src}}">
+          <img src="{{image.src}}" style="object-position: {{image.position}}">
         </div>
         {% endfor %}
       </div>

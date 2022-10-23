@@ -6,6 +6,7 @@ import asyncio
 from pyppeteer import launch
 from PyPDF2 import PdfFileMerger
 import mistune
+from subprocess import call
 
 output_html_filename = "portfolio.html"
 output_html_path = os.path.join(
@@ -19,8 +20,9 @@ with open("data.yaml", "r") as infile:
 data = dict(data.data)
 
 
-async def render(outname="portfolio.pdf"):
-    tempname = outname + ".tmp.pdf"
+async def render(outname="portfolio.pdf", compress=None):
+    tempname = outname + ".tmp1.pdf"
+    tempname2 = outname + ".tmp2.pdf"
 
     print("saving pdf")
     browser = await launch()
@@ -29,10 +31,29 @@ async def render(outname="portfolio.pdf"):
     await page.pdf(path=tempname, printBackground=True, landscape=True)
     await browser.close()
 
-    print("adding bookmarks")
+    if compress is None:
+        tempname2 = tempname
+    else:
+        # from: https://www.digitalocean.com/community/tutorials/reduce-pdf-file-size-in-linux
+        # options are screen, ebook, prepress, printer, default
+        print("compressing")
+        call(
+            [
+                "gs",
+                "-sDEVICE=pdfwrite",
+                "-dCompatibilityLevel=1.4",
+                f"-dPDFSETTINGS=/{compress}",
+                "-dNOPAUSE",
+                "-dQUIET",
+                "-dBATCH",
+                f"-sOutputFile={tempname2}",
+                tempname,
+            ]
+        )
 
+    print("adding bookmarks")
     output = PdfFileMerger()
-    output.append(tempname)
+    output.append(tempname2)
 
     for project in data["projects"]:
         output.addBookmark(project["title"], int(project["start_page"]) - 1)
@@ -40,7 +61,11 @@ async def render(outname="portfolio.pdf"):
     with open(outname, "wb") as outfile:
         output.write(outfile)
 
-    os.unlink(tempname)
+    try:
+        os.unlink(tempname)
+        os.unlink(tempname2)
+    except Exception as e:
+        pass
 
 
 def main(render_pdf=True):
@@ -52,6 +77,13 @@ def main(render_pdf=True):
     for project in data["projects"]:
         project["id"] = pid
         project["description"] = mistune.html(project["description"])
+
+        for index, image in enumerate(project["images"]):
+            if isinstance(image, str):
+                src = image
+                position = "center"
+                image = {"src": src, "position": position}
+                project["images"][index] = image
 
         layouts = []
 
@@ -75,11 +107,17 @@ def main(render_pdf=True):
 
             for i in total_images:
                 try:
-                    page["images"].append(
-                        {"src": project["images"][image_index], "name": i}
-                    )
+                    image = project["images"][image_index]
+                    if isinstance(image, str):
+                        src = image
+                        position = "center"
+                    else:
+                        src = image.get("src")
+                        position = image.get("position", "center")
+                    page["images"].append({"src": src, "position": position, "name": i})
                     image_index += 1
                 except Exception as e:
+                    print(e)
                     continue
 
             layouts.append(page)

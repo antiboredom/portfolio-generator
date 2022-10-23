@@ -18,9 +18,15 @@ To use, modify `data.yml`. And then run:
 python generate.py
 ```
 
-The script will create an html file, and then convert that file to a PDF.
+The script will create an html file, that you can preview by opening in any web browser.
 
-You can modify style.css to make any needed design changes.
+To convert this to a PDF you can run:
+
+```
+python generate.py render
+```
+
+To modify font, colors and so on, just edit `style.css`.
 
 If you have [nodemon](https://www.npmjs.com/package/nodemon) installed you can also run `run.sh` which will automatically re-generate your portfolio when you change any of the files.
 

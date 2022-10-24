@@ -4,3 +4,4 @@ venv/
 testimages/
 images/
 portfolio.html
+!portfolio_sample.pdf

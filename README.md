@@ -2,7 +2,7 @@
 
 This tool generates a PDF portfolio by reading configuration from a `yml` file. I use it for myself, but making it open in case it's helpful for others (I hate making portfolios with InDesign).
 
-See [portfolio_sample.pdf](https://github.com/antiboredom/portfolio-generator/blob/main/portfolio_sample.pdf) for an example output.
+See [portfolio_sample.pdf](https://raw.githubusercontent.com/antiboredom/portfolio-generator/main/portfolio_sample.pdf) for an example output.
 
 ## Installation
 

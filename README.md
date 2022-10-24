@@ -26,9 +26,17 @@ To convert this to a PDF you can run:
 python generate.py render
 ```
 
+Please note that the script will not optimize images by default! If the PDF is too large, you can either optimize the images yourself, or if you have ghostscript installed run:
+
+```
+python generate.py render [COMPRESSION]
+```
+
+(where [COMPRESSION] is either: screen, ebook, prepress, or printer)
+
 To modify font, colors and so on, just edit `style.css`.
 
-If you have [nodemon](https://www.npmjs.com/package/nodemon) installed you can also run `run.sh` which will automatically re-generate your portfolio when you change any of the files.
+If you have [nodemon](https://www.npmjs.com/package/nodemon) installed you can also run `run.sh` which will automatically re-generate your html portfolio when you change any of the files.
 
 ## Data format
 
@@ -91,4 +99,3 @@ projects:
 - **size**: Width and height of the text description box, separated by spaces, in css units. Height is optional.
 - **position**: The absolute position of the description box, in css units, using [top right bottom left]
 - **layout**: an optional description of how images should be arranged in a grid. Uses the same syntax as [css grid-template-areas](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas)
-

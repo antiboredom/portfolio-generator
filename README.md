@@ -44,20 +44,23 @@ projects:
   - title: A project title
     url: https://website.com
     year: 2020
-    material: website
-    commissioned: rhizome
+    material: Website, prints
     images:
       - images/one.jpg
       - images/two.jpg
-    description: >
+      - src: images/three.jpg
+        position: top left
+    description: |
       The description of your project goes here.
+
+      Multilines are ok and so is *markdown*.
 
   - title: Another project title
     url: https://website.com
     year: 2020
     description: A short description
-    text_width: 500px
-    text_height: 300px
+    position: 1in 2in auto auto
+    size: 5in 2in
     images:
       - images/three.jpg
       - images/four.jpg
@@ -79,14 +82,13 @@ projects:
 
 **projects**: an list of projects where individual projects contain:
 
-- **title**: the project title
-- **url**: project url (optional)
-- **material**: material or materials (optional)
-- **year**: project year
-- **commissioned**: a commissioning organization (optional)
-- **images**: a list of images to include. Use relative paths
-- **description**: a description of the project. Can be multi-line, and can include markdown.
-- **text_width**: the width of the description text box (optional)
-- **text_height**: the height of the description text box (optional)
+- **title**: The project title
+- **url**: Project url (optional)
+- **material**: Material or materials (optional)
+- **year**: Project year
+- **images**: A list of images to include. Uses relative paths
+- **description**: A description of the project. Can be multi-line, and can include markdown.
+- **size**: Width and height of the text description box, separated by spaces, in css units. Height is optional.
+- **position**: The absolute position of the description box, in css units, using [top right bottom left]
 - **layout**: an optional description of how images should be arranged in a grid. Uses the same syntax as [css grid-template-areas](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas)
 

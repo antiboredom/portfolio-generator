@@ -4,9 +4,10 @@
 
 body {
   font: 12pt "Times New Roman";
-  line-height: 150%;
+  line-height: auto;
   padding: 0;
   margin: 0;
+  width: 11in;
 }
 
 @page {
@@ -22,10 +23,15 @@ a {
   color: red;
 }
 
+p {
+  margin: 10px 0px;
+}
+
 .page {
   display: grid;
   height: 8.5in;
   width: 11in;
+  position: relative;
 }
 
 .page-image {
@@ -47,9 +53,15 @@ a {
   position: absolute;
   top: 1in;
   left: 1in;
-  border: 2px solid #000;
+  border: 1px solid #000;
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 12pt;
+  padding: 7pt;
+  font-size: 12px;
+}
+
+p.url-holder {
+  margin: 0;
+  padding: 0;
 }
 
 .project-box p:last-child {
@@ -67,6 +79,16 @@ h3 {
   margin: 0;
 }
 
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+
+h2 {
+  font-size: 16px;
+}
+
 .toc {
   /* column-count: 2; */
   display: block;
@@ -78,25 +100,34 @@ h3 {
   grid-template-columns: 1fr 1fr;
 }
 
-h1 {
-  margin-bottom: 20px;
-}
-
 .toc-project {
   display: flex;
-  margin-bottom: 10px;
-  line-height: 1;
+  margin-bottom: 20px;
+  line-height: auto;
 }
 
 .toc-project a {
   color: #000;
+  font-size: 1.1em;
+}
+
+.toc-meta::before {
+    content: "";
+    margin-top: -3px;
+    display: block;
+    height: 0;
+}
+
+.toc-project a span{
+  font-style: italic;
 }
 
 .toc-image {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
-  margin-right: 5px;
+  margin-right: 10px;
+  border: 1px solid #000;
 }
 
 .toc-project p {

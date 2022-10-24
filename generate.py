@@ -20,6 +20,13 @@ with open("data.yaml", "r") as infile:
 data = dict(data.data)
 
 
+def date_sort(p):
+    try:
+        return int(p["year"])
+    except Exception as e:
+        return 0
+
+
 async def render(outname="portfolio.pdf", compress=None):
     tempname = outname + ".tmp1.pdf"
     tempname2 = outname + ".tmp2.pdf"
@@ -68,15 +75,30 @@ async def render(outname="portfolio.pdf", compress=None):
         pass
 
 
-def main(render_pdf=True):
+def main(render_pdf=True, compress=None):
 
     pid = 1
 
     start_page = 2
 
+    data["projects"] = sorted(data["projects"], key=date_sort, reverse=True)
+
+    total_images = sum([len(p.get("images", [])) for p in data["projects"]])
+    print("total images:", total_images)
+
     for project in data["projects"]:
         project["id"] = pid
         project["description"] = mistune.html(project["description"])
+
+        position = project.get("position", "1in auto auto 1in").split(" ")
+        position = [x.strip() for x in position if x != ""]
+        project["position"] = position
+
+        size = project.get("size", "4in auto").split(" ")
+        size = [x.strip() for x in size if x != ""]
+        if len(size) == 1:
+            size.append("auto")
+        project["size"] = size
 
         for index, image in enumerate(project["images"]):
             if isinstance(image, str):
@@ -139,7 +161,7 @@ def main(render_pdf=True):
         outfile.write(output)
 
     if render_pdf:
-        asyncio.get_event_loop().run_until_complete(render())
+        asyncio.get_event_loop().run_until_complete(render(compress=compress))
 
 
 if __name__ == "__main__":
@@ -148,4 +170,9 @@ if __name__ == "__main__":
     except Exception as e:
         render_pdf = False
 
-    main(render_pdf=render_pdf)
+    try:
+        compress = sys.argv[2]
+    except Exception as e:
+        compress = None
+
+    main(render_pdf=render_pdf, compress=compress)

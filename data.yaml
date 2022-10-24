@@ -2,46 +2,134 @@ title: Sam Lavigne
 website: https://lav.io
 
 projects:
-  - title: title 1
-    url: https://website.com
+  - title: New York Apartment
+    url: https://whitney.org/artport-commissions/new-york-apartment/index.html
     year: 2020
-    material: website
-    commissioned: rhizome
+    material: Website, prints, video
+    commissioned: The Whitney Museum of American Art
     images:
-      - testimages/one.jpg
-      - testimages/two.jpg
-    description: >
-      this won't [have](https://google.com) line
-      breaks...
-
-  - title: title 1
-    url: https://website.com
-    year: 2020
-    material: lol
-    commissioned: rhizome
-    images:
-      - testimages/one.jpg
-    description: ty
-      this won't [have](https://google.com) line
-      breaks...
-
-  - title: title 2
-    url: https://website.com
+      - images/nyapt/install.jpg
+      - src: images/nyapt/new-york-apartment-front-no-shadow.png
+        position: top left
+    size: 300px
     description: |
-      this is a test with line breaks
-      another test
-      last test
-    text_width: 500px
-    text_height: 300px
-    commissioned: rhizome
-    layout: |
-      A A A
-      B B C
+      New York Apartment combines the totality of New York real estate into a single website, sourced from every single for-sale listing in New York City. The site includes hundreds of thousands of images, video tours, descriptive sentences, 3d structures generated from extruded floor plans, and a mortgage calculator.
 
-      D E
+      New York Apartment was made in collaboration with Tega Brain. It was a commission from the Whitney Museum for the Artport collection, curated by Christiane Paul.
+
+  - title: Perfect Sleep
+    url: https://perfectsleep.labr.io/
+    year: 2021
+    material: Smartphone app, sound, custom reclining furniture
     images:
-      - testimages/three.jpg
-      - testimages/four.jpg
-      - testimages/five.jpg
-      - testimages/six.jpg
-      - testimages/seven.jpg
+      - images/perfectsleep/install3.jpg
+      - images/perfectsleep/app_screens.png
+    size: 300px
+    position: 0.5in 0.5in auto auto
+    description: |
+      Perfect Sleep investigates sleep and dreaming as a potential climate engineering technology. By inviting participants to experiment with their own sleep cycles, the work explores how lack of sleep and climate change are both products of the same extractivist capitalist system where regeneration, rest and natural limits go unvalued. The work is realized in two parts: as a smart phone app and an installation. The app allows users to adjust their daily schedule, slowly increasing their sleep time over the course of three years until they achieve a state of ‘total sleep,' and includes a series of dream incubation texts written by Simone Browne, Johanna Hedva, Holly Jean Buck, and Sophie Lewis. In the installation the dreamscapes can be experienced from custom daybeds.
+
+      This work is a collaboration with Tega Brain, as a commission for Museum Sinclair-Haus, and received an Award of Distinction from Prix Ars Electronica.
+
+  - title: Zoom Escaper
+    url: https://zoomescaper.com/
+    year: 2021
+    material: Website, video
+    description: A tool to help you escape Zoom meetings and other videoconferencing scenarios. It allows you to self-sabotage your audio stream, making your presence unbearable to others. Received wide coverage in the media, including the Guardian, The Daily Show, and CNN.
+    images:
+      - src: images/zoomescaper/web.png
+        position: top left
+
+    position: auto 1in 1in auto
+
+  - title: Fragile States
+    url: https://fragilestates.labr.io
+    description: An archive of interviews with former political prisoners who have been incarcerated for climate activism. It is an ongoing project to celebrate and financially support those who have faced retaliatory state violence for engaging in direct action.
+    year: 2022
+    images:
+      - src: images/fragile/web.png
+        position: top left
+    position: auto 1in 1in auto
+    size: 2in
+
+  - title: White Collar Crime Risk Zones
+    url: https://whitecollarcrime.zone/
+    year: 2017
+    description: White Collar Crime Risk Zones uses machine learning to predict where financial crimes are mostly likely to occur across the US. The project is realized as a website, smartphone app and gallery installation. Made in collaboration with Brian Clifton and Francis Tseng.
+    images:
+      - src: images/whitecollar/interface.png
+        position: top left
+    position: auto 0.5in 0.5in auto
+    size: 4in
+
+  - title: APD Decruitment
+    url: https://apddecruiting.org/
+    year: 2022
+    description: |
+      A multi-part public service campaign that aims to prevent potential recruits from joining the Austin Police Department, and to convince existing police officers to quit their jobs. Police officers are offered discounts at local Austin businesses in exchange for quitting. The project includes a website, an installation, and video featuring paid appearances by Rudy Giuliani, David Clarke, and Joe Arpaio.
+
+      A collaboration with Andie Flores, commissioned by the “It’s Not Fair” for FuseBox Festival.
+    images:
+      - images/apd/install1.jpg
+    position: auto auto 1in 1in
+    size: 3in
+
+  - title: Get Well Soon
+    url: https://getwellsoon.labr.io
+    year: 2021
+    material: Website
+    position: 4in 4in auto auto
+    size: 4in
+    description: |
+      A massive e-card comprised of over 200,000 unique messages of well wishes. The messages are sourced from the popular crowd funding site gofundme.com, a self-described “leader in online medical fundraising”, which, due to lack of affordable healthcare in the United States is widely relied upon for funding vital medical procedures. The piece is accompanied by a short essay from Johanna Hedva.
+
+      Get Well Soon was made in collaboration with Tega Brain. It was shown as part of the online exhibit We=Link, co-commissioned by Chronus Art Center (Shanghai), Art Center Nabi (Seoul) and Rhizome/The New Museum (New York). It was described as a "defining artwork of 2020" by ARTnews.
+    images:
+      - src: images/getwell/screenshot.png
+        position: top left
+
+  - title: Software Tools for the Arts
+    material: Code
+    year: Ongoing
+    url: https://lav.io/about/
+    position: 1.0in auto auto 0.5in
+    images:
+      - images/software/software.jpg
+    description: |
+      I build open source software tools that I integrate into both my practice and my teaching. These include: p5.riso, a library that helps generate files suitable for Risograph printing via p5js; p5.vscode, which helps users create p5.js projects in Visual Studio Code; and Videogrep, a command line tool written in Python that searches through dialog in video files and makes "supercuts" based on what it finds.
+
+  - title: BailBloc
+    year: 2017
+    material: Software, web
+    url: https://bailbloc.thenewinquiry.com
+    position: 1.2in 0.2in auto auto
+    images:
+      - images/bail/web2.png
+    description: |
+      A downloadable application and website that raises money for bail funds by mining cryptocurrency.
+
+      When users download the app, a small part of their computer’s unused processing power is redirected toward mining the Monero cryptocurrency, which is secure, private, and untraceable. At the end of every month, the Monero is exchanged for US dollars which are then donated to the Bronx Freedom Fund.
+
+
+  - title: Baabaa
+    material: Prints, web
+    year: 2017
+    url: https://antiboredom.github.io/baabaa/
+    images:
+      - images/baabaa/baba.png
+    description: |
+      An index of selected commodities, listed for sale on alibaba.com. Items are arranged by price and minimum order quantity and are search results for terms like “riot gear” and “human labor.”
+
+  - title: Synthetic Messenger
+    year: 2021
+    url: https://syntheticmessenger.labr.io/
+    material: Web, botnet, multi-channel video
+    position: auto 1.0in 1.0in auto
+    description: |
+      A botnet performance that attempts to artificially inflate the value of climate news. Every day the system searches the internet for news articles covering climate change. Then 100 bots visit each article and click on every ad they can find.
+    images:
+      - images/synth/synth.jpg
+
+
+  # - title: Synthetic Messenger
+  # - title: p5.riso

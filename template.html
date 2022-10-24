@@ -13,8 +13,13 @@
         {% for project in projects %}
         <div class="toc-project">
           <img class="toc-image" src="{{project.images[0].src}}" />
-          <div>
-            <a class="project-toc-title" href="#project-{{project.id}}">{{project.title}} ({{project.year}})</a>
+          <div class="toc-meta">
+            <p>
+              <a class="project-toc-title" href="#project-{{project.id}}">
+                <span>{{project.title}}</span>
+                ({{project.year}})
+              </a>
+            </p>
             <p>{{project.material}}</p>
             <p>Page 
               {% if project.start_page == project.end_page %}
@@ -31,10 +36,6 @@
 
     {% for project in projects %}
     <section id="project-{{project.id}}" class="project-{{project.id}}">
-      <div class="project-box" style="top: {{project.top}}; left: {{project.left}}; bottom: {{project.bottom}}; right: {{project.right}}; width: {{project.text_width}}; height: {{project.text_height}}">
-        <h2 class="title">{{project.title}}</h2>
-        <div class="description">{{project.description}}</div>
-      </div>
       {% for layout in project.layouts %}
       <div
         class="page"
@@ -45,6 +46,16 @@
           <img src="{{image.src}}" style="object-position: {{image.position}}">
         </div>
         {% endfor %}
+
+        {% if loop.index == 1 %}
+          <div class="project-box" style="top: {{project.position[0]}}; right: {{project.position[1]}}; bottom: {{project.position[2]}}; left: {{project.position[3]}}; width: {{project.size[0]}}; height: {{project.size[1]}}">
+            <h2 class="title">{{project.title}}</h2>
+            {% if project.url %}
+              <p class="url-holder"><a href="{{project.url}}">{{project.url}}</a></p>
+            {% endif %}
+            <div class="description">{{project.description}}</div>
+          </div>
+        {% endif %}
       </div>
       {% endfor %}
     </section>

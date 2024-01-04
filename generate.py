@@ -13,12 +13,6 @@ output_html_path = os.path.join(
     os.path.dirname(os.path.realpath(__file__)), output_html_filename
 )
 
-with open("data.yaml", "r") as infile:
-    content = infile.read()
-    data = load(content)
-
-data = dict(data.data)
-
 
 def date_sort(p):
     try:
@@ -27,7 +21,7 @@ def date_sort(p):
         return 0
 
 
-async def render(outname="portfolio.pdf", compress=None):
+async def render(data, outname="portfolio.pdf", compress="none"):
     tempname = outname + ".tmp1.pdf"
     tempname2 = outname + ".tmp2.pdf"
 
@@ -38,7 +32,7 @@ async def render(outname="portfolio.pdf", compress=None):
     await page.pdf(path=tempname, printBackground=True, landscape=True)
     await browser.close()
 
-    if compress is None:
+    if compress == "none":
         tempname2 = tempname
     else:
         # from: https://www.digitalocean.com/community/tutorials/reduce-pdf-file-size-in-linux
@@ -75,8 +69,7 @@ async def render(outname="portfolio.pdf", compress=None):
         pass
 
 
-def main(render_pdf=True, compress=None):
-
+def main(data, outname="portfolio.pdf", render_pdf=True, compress="none"):
     pid = 1
 
     start_page = 2
@@ -161,18 +154,38 @@ def main(render_pdf=True, compress=None):
         outfile.write(output)
 
     if render_pdf:
-        asyncio.get_event_loop().run_until_complete(render(compress=compress))
+        asyncio.get_event_loop().run_until_complete(
+            render(data, outname=outname, compress=compress)
+        )
 
 
 if __name__ == "__main__":
-    try:
-        render_pdf = sys.argv[1] == "render"
-    except Exception as e:
-        render_pdf = False
+    import argparse
 
-    try:
-        compress = sys.argv[2]
-    except Exception as e:
-        compress = None
+    parser = argparse.ArgumentParser("Generate portfolio")
 
-    main(render_pdf=render_pdf, compress=compress)
+    parser.add_argument(
+        "--render", "-r", default=False, action="store_true", help="Render PDF"
+    )
+    parser.add_argument(
+        "--compress",
+        "-c",
+        default="none",
+        choices=["screen", "ebook", "prepress", "printer", "default"],
+        help="Compress PDF",
+    )
+    parser.add_argument("--input", "-i", default="data.yml", help="Input yaml file")
+    parser.add_argument(
+        "--output", "-o", default="portfolio.pdf", help="Output PDF file"
+    )
+
+    args = parser.parse_args()
+    print(args)
+
+    with open(args.input, "r") as infile:
+        content = infile.read()
+        data = load(content)
+
+    data = dict(data.data)
+
+    main(data, outname=args.output, render_pdf=args.render, compress=args.compress)

@@ -1,4 +1,3 @@
-import sys
 import os
 from strictyaml import load
 from jinja2 import Template
@@ -18,6 +17,7 @@ def date_sort(p):
     try:
         return int(p["year"])
     except Exception as e:
+        print(e)
         return 0
 
 

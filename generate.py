@@ -16,8 +16,7 @@ output_html_path = os.path.join(
 def date_sort(p):
     try:
         return int(p["year"])
-    except Exception as e:
-        print(e)
+    except Exception as _e:
         return 0
 
 
@@ -180,7 +179,6 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    print(args)
 
     with open(args.input, "r") as infile:
         content = infile.read()
